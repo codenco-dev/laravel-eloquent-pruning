@@ -1,0 +1,54 @@
+{
+    "name": "codenco-dev/laravel-eloquent-pruning",
+    "description": "We often have to clean up our oldest or unnecessary records. This package does it easily for us.",
+    "keywords": [
+        "codenco-dev",
+        "laravel-eloquent-pruning"
+    ],
+    "homepage": "https://github.com/codenco-dev/laravel-eloquent-pruning",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Dominic Thomas",
+            "email": "dthomas@codenco.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodencoDev\\LaravelEloquentPruning\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodencoDev\\LaravelEloquentPruning\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CodencoDev\\LaravelEloquentPruning\\LaravelEloquentPruningServiceProvider"
+            ],
+            "aliases": {
+                "LaravelEloquentPruning": "CodencoDev\\LaravelEloquentPruning\\LaravelEloquentPruningFacade"
+            }
+        }
+    }
+}
