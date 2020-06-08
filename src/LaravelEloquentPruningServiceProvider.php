@@ -11,33 +11,10 @@ class LaravelEloquentPruningServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-eloquent-pruning');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-eloquent-pruning');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('laravel-eloquent-pruning.php'),
+                __DIR__.'/../config/laravel-eloquent-pruning.php' => config_path('laravel-eloquent-pruning.php'),
             ], 'config');
-
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-eloquent-pruning'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-eloquent-pruning'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-eloquent-pruning'),
-            ], 'lang');*/
 
             // Registering package commands.
             // $this->commands([]);
@@ -50,7 +27,7 @@ class LaravelEloquentPruningServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-eloquent-pruning');
+        $this->mergeConfigFrom(__DIR__.'/../config/laravel-eloquent-pruning.php', 'laravel-eloquent-pruning');
 
         // Register the main class to use with the facade
         $this->app->singleton('laravel-eloquent-pruning', function () {
