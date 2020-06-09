@@ -9,5 +9,4 @@ class StuffModel extends Model
 {
     use Prunable;
     protected $fillable = ['id'];
-
 }

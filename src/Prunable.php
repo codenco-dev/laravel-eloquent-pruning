@@ -1,8 +1,6 @@
 <?php
 
-
 namespace CodencoDev\LaravelEloquentPruning;
-
 
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,14 +8,13 @@ use Illuminate\Support\Facades\Date;
 
 trait Prunable
 {
-
     private ?string $pruningColumn = null;
     private ?int $hours = null;
     private ?int $chunkSize = null;
     private ?bool $withDeleteEvents = null;
 
     /**
-     * Get the base column for pruning
+     * Get the base column for pruning.
      */
     public function getPruningColumn(): string
     {
@@ -25,16 +22,17 @@ trait Prunable
     }
 
     /**
-     * Set the base column for pruning
+     * Set the base column for pruning.
      */
     public function setPruningColumn(string $pruningColumn): self
     {
         $this->pruningColumn = $pruningColumn;
+
         return $this;
     }
 
     /**
-     * Get the number of hours for a record to be considered old
+     * Get the number of hours for a record to be considered old.
      */
     public function getHours(): int
     {
@@ -42,17 +40,17 @@ trait Prunable
     }
 
     /**
-     * Set the number of hours for a record to be considered old
+     * Set the number of hours for a record to be considered old.
      */
     public function setHours(int $hours): self
     {
         $this->hours = $hours;
+
         return $this;
     }
 
-
     /**
-     * Get the count of records delete in one time
+     * Get the count of records delete in one time.
      */
     public function getChunkSize(): int
     {
@@ -60,26 +58,25 @@ trait Prunable
     }
 
     /**
-     * Set the count of records delete in one time
+     * Set the count of records delete in one time.
      */
     public function setChunkSize(int $chunkSize): self
     {
         $this->chunkSize = $chunkSize;
+
         return $this;
     }
 
-
     /**
-     * Define if the active record can be pruned, if the ProcessWithDeleteEvents is true
+     * Define if the active record can be pruned, if the ProcessWithDeleteEvents is true.
      */
     public function canBePruned(): bool
     {
         return true;
     }
 
-
     /**
-     * Scope that allows filter records for pruning
+     * Scope that allows filter records for pruning.
      */
     public function scopeCouldBePruned(Builder $query): Builder
     {
@@ -87,16 +84,17 @@ trait Prunable
     }
 
     /**
-     * Set then withDeleteEvent attribute for model
+     * Set then withDeleteEvent attribute for model.
      */
     public function setWithDeleteEvents(bool $withDeleteEvents): self
     {
         $this->withDeleteEvents = $withDeleteEvents;
+
         return $this;
     }
 
     /**
-     * Get then withDeleteEvent attribute for model
+     * Get then withDeleteEvent attribute for model.
      */
     public function getWithDeleteEvents(): bool
     {
@@ -104,7 +102,7 @@ trait Prunable
     }
 
     /**
-     * Get if the process must run with query or model
+     * Get if the process must run with query or model.
      */
     public function ProcessWithDeleteEvents(): bool
     {
@@ -112,7 +110,7 @@ trait Prunable
     }
 
     /**
-     * Start deleting items that are too old
+     * Start deleting items that are too old.
      */
     public function prune(DateTimeInterface $before = null): int
     {
@@ -135,7 +133,6 @@ trait Prunable
                 $totalDeleted += $deleted;
             } while ($deleted !== 0);
         }
-
 
         return $totalDeleted;
     }
