@@ -4,6 +4,9 @@
 namespace CodencoDev\LaravelEloquentPruning\Console;
 
 
+use CodencoDev\LaravelEloquentPruning\LaravelEloquentPruning;
+use CodencoDev\LaravelEloquentPruning\LaravelEloquentPruningFacade;
+
 class StartPruning extends \Illuminate\Console\Command
 {
     protected $signature = 'pruning:start {--hours : The number of hours to retain data}';
@@ -12,11 +15,8 @@ class StartPruning extends \Illuminate\Console\Command
 
     public function handle()
     {
-        $models = config('laravel-eloquent-pruning.models', []);
-        $hours = $this->option('hours') ?: 0;
-        foreach ($models as $model) {
-            $pruned_count = (new $model)->prune(now()->subHours($hours));
-            $this->info($pruned_count.' entries pruned.');
-        }
+        $pruned_count = LaravelEloquentPruningFacade::prune($this->option('hours') ?: 0);
+        $this->info($pruned_count.' entries pruned.');
+
     }
 }
