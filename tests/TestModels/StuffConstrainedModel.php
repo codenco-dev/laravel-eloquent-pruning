@@ -11,7 +11,6 @@ class StuffConstrainedModel extends Model
     use Prunable;
     protected $fillable = ['id'];
 
-    protected $table = 'stuff_models';
 
     public function canBePruned()
     {

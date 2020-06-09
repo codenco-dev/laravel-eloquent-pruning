@@ -2,6 +2,7 @@
 
 namespace CodencoDev\LaravelEloquentPruning;
 
+use CodencoDev\LaravelEloquentPruning\Console\StartPruning;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelEloquentPruningServiceProvider extends ServiceProvider
@@ -17,7 +18,9 @@ class LaravelEloquentPruningServiceProvider extends ServiceProvider
             ], 'config');
 
             // Registering package commands.
-            // $this->commands([]);
+             $this->commands([
+                 StartPruning::class,
+             ]);
         }
     }
 

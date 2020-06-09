@@ -4,6 +4,7 @@
 namespace CodencoDev\LaravelEloquentPruning;
 
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Date;
 

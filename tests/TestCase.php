@@ -29,6 +29,14 @@ abstract class TestCase extends Orchestra
             $table->increments('id');
             $table->timestamps();
         });
+        $this->app['db']->connection()->getSchemaBuilder()->create('stuff_constrained_models', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+        });
+        $this->app['db']->connection()->getSchemaBuilder()->create('stuff_constrained_with_event_models', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+        });
 
 
 

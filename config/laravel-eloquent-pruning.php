@@ -6,4 +6,5 @@ return [
     'hours' => 24,
     'must_use_delete_event' => false,
     'with_delete_events' => true,
+    'models' => [], //List of models for pruning:start command
 ];
