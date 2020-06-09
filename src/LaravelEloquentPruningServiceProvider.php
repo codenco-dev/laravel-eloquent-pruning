@@ -18,9 +18,9 @@ class LaravelEloquentPruningServiceProvider extends ServiceProvider
             ], 'config');
 
             // Registering package commands.
-             $this->commands([
-                 StartPruning::class,
-             ]);
+            $this->commands([
+                StartPruning::class,
+            ]);
         }
     }
 

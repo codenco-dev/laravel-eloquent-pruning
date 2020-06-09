@@ -11,7 +11,6 @@ class StuffConstrainedModel extends Model
     use Prunable;
     protected $fillable = ['id'];
 
-
     public function canBePruned()
     {
         return $this->id != 1;
@@ -19,7 +18,6 @@ class StuffConstrainedModel extends Model
 
     public function scopeCouldBePruned(Builder $query)
     {
-        return $query->where('id','!=','1');
+        return $query->where('id', '!=', '1');
     }
-
 }

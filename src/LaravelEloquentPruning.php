@@ -6,12 +6,13 @@ class LaravelEloquentPruning
 {
     private ?array $models = null;
 
-    public function prune(int $hours=0)
+    public function prune(int $hours = 0)
     {
         $pruned_count = 0;
         foreach ($this->getModels() as $model) {
             $pruned_count += (new $model)->prune(now()->subHours($hours));
         }
+
         return $pruned_count;
     }
 
@@ -27,9 +28,10 @@ class LaravelEloquentPruning
      * @param  array  $models
      * @return LaravelEloquentPruning
      */
-    public function setModels(?array $models): LaravelEloquentPruning
+    public function setModels(?array $models): self
     {
         $this->models = $models;
+
         return $this;
     }
 }
