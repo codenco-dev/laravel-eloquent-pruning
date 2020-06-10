@@ -5,7 +5,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/codenco-dev/laravel-eloquent-pruning.svg?style=flat-square)](https://scrutinizer-ci.com/g/codenco-dev/laravel-eloquent-pruning)
 [![Total Downloads](https://img.shields.io/packagist/dt/codenco-dev/laravel-eloquent-pruning.svg?style=flat-square)](https://packagist.org/packages/codenco-dev/laravel-eloquent-pruning)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This awesome package allows managing pruning of your eloquent model.  
 
 ## Installation
 
@@ -15,11 +15,44 @@ You can install the package via composer:
 composer require codenco-dev/laravel-eloquent-pruning
 ```
 
+## Configuration
+
+You can publish configuration file with this command line
+```bash
+php artisan vendor:publish --provider="CodencoDev\LaravelEloquentPruning\LaravelEloquentPruningServiceProvider" --tag="config"
+```
+
+In configuration file, you can manage default value for the Pruning Package.
+
+Each options for a model can be defined in the model file like this : 
+
+ ``` php
+     class MyModel extends Model
+     {
+         use Prunable;
+     
+         protected $fillable = ['id'];
+     
+         protected $hours = 1;
+         protected $pruningColumn = 'updated_at';
+         protected $chunkSize = 1000;
+         protected $withDeleteEvents = false;
+     
+     }
+ ```
+
 ## Usage
 
+You can add global pruning on your schedule by modifying `app/Console/Kernel.php` like this for example
+
 ``` php
-// Usage description here
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('pruning:start')->hourly();
+    }
 ```
+
+
 
 ### Testing
 
