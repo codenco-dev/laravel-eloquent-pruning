@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Date;
 trait Prunable
 {
 
-    private ?string $pruningColumn = null;
-    private ?int $hours = null;
-    private ?int $chunkSize = null;
-    private ?bool $withDeleteEvents = null;
+//    private ?string $pruningColumn = null;
+//    private ?int $hours = null;
+//    private ?int $chunkSize = null;
+//    private ?bool $withDeleteEvents = null;
 
     /**
      * Get the base column for pruning
