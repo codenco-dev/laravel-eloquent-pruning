@@ -4,6 +4,8 @@ namespace CodencoDev\LaravelEloquentPruning;
 
 class LaravelEloquentPruning
 {
+    private $models = null;
+
     public function prune(int $hours = 0)
     {
         $pruned_count = 0;
