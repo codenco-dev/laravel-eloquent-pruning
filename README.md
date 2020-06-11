@@ -17,12 +17,13 @@ composer require codenco-dev/laravel-eloquent-pruning
 
 ## Configuration
 
-You can publish configuration file with this command line
-```bash
-php artisan vendor:publish --provider="CodencoDev\LaravelEloquentPruning\LaravelEloquentPruningServiceProvider" --tag="config"
-```
+We have several options that must be configure.
 
-In configuration file, you can manage default value for the Pruning Package.
++ `pruning_column` - The name of the column that will be used to determine if a record should be pruned
++ `hours` - The hours count that will determine if a record should pruned relative to pruning_column and now
++ `with_delete_events` - If the value is true, the delete method of model will be call, allowing fire events. If the value is false, the delete action will be done with query builder, without event.
++ `chunk_size` - The size of delete query if with_delete_events is false
+
 
 Each options for a model can be defined in the model file like this : 
 
@@ -41,6 +42,51 @@ Each options for a model can be defined in the model file like this :
      }
  ```
 
+If you need something more elaborate, you be able to overwrite, `Prunable` trait methods.
+
+``` php
+    class MyModel extends Model
+    {
+        use Prunable;
+    
+        protected $fillable = ['id'];
+    
+        public function getHours(): int
+        {
+            return 1;
+        }
+    
+        public function getPruningColumn(): string
+        {
+            return 'created_at';
+        }
+    
+        public function getChunkSize(): int
+        {
+            return 1000;
+        }
+    
+        public function getWithDeleteEvents(): bool
+        {
+            return false;
+        }
+    }
+```
+ 
+You can publish configuration file with this command line
+```bash
+php artisan vendor:publish --provider="CodencoDev\LaravelEloquentPruning\LaravelEloquentPruningServiceProvider" --tag="config"
+```
+
+In configuration file, you can manage default value for the Pruning Package. 
+You must define models that will be affected by pruning.  
+ 
+```php
+    'models' => [
+        App\MyModel::class,
+        App\MySecondModel::class,
+    ],
+```
 ## Usage
 
 You can add global pruning on your schedule by modifying `app/Console/Kernel.php` like this for example
@@ -49,6 +95,27 @@ You can add global pruning on your schedule by modifying `app/Console/Kernel.php
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('pruning:start')->hourly();
+    }
+```
+
+If you want bypass model hour configuration, you can call this command with `hours` option like this : 
+``` php
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('pruning:start --hours=48])->hourly();
+    }
+```
+This call allows to prune all data created more than 48 hours ago.
+
+
+Of course, you can use a schedule by model (or create a dedicated command if you want) : 
+
+``` php
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->call(function(){
+            (new MyModel)->prune();
+        })->daily();
     }
 ```
 
@@ -86,4 +153,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
 
 ## Inspiration
-This package is inspired by laravel/telescope pruning. 
+This package was inspired by laravel/telescope pruning. 
