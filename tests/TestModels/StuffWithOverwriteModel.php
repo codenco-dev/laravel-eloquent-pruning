@@ -1,6 +1,5 @@
 <?php
 
-
 namespace CodencoDev\LaravelEloquentPruning\Tests\TestModels;
 
 use CodencoDev\LaravelEloquentPruning\Prunable;
@@ -11,8 +10,6 @@ class StuffWithOverwriteModel extends Model
     use Prunable;
 
     protected $fillable = ['id'];
-
-
 
     public function getHours(): int
     {
@@ -33,6 +30,4 @@ class StuffWithOverwriteModel extends Model
     {
         return false;
     }
-
-
 }
