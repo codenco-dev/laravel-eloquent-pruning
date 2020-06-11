@@ -1,8 +1,6 @@
 <?php
 
-
 namespace CodencoDev\LaravelEloquentPruning;
-
 
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,7 +8,6 @@ use Illuminate\Support\Facades\Date;
 
 trait Prunable
 {
-
 //    private ?string $pruningColumn = null;
 //    private ?int $hours = null;
 //    private ?int $chunkSize = null;
@@ -51,7 +48,6 @@ trait Prunable
 
         return $this;
     }
-
 
     /**
      * Get the count of records delete in one time.

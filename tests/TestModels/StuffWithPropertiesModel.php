@@ -15,5 +15,4 @@ class StuffWithPropertiesModel extends Model
     protected $pruningColumn = 'test_column';
     protected $chunkSize = 1000;
     protected $withDeleteEvents = false;
-
 }

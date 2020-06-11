@@ -1,8 +1,6 @@
 <?php
 
-
 namespace CodencoDev\LaravelEloquentPruning\Tests;
-
 
 use CodencoDev\LaravelEloquentPruning\Tests\TestModels\StuffConstrainedModel;
 use CodencoDev\LaravelEloquentPruning\Tests\TestModels\StuffConstrainedWithEventModel;
@@ -58,27 +56,24 @@ class PrunableTest extends TestCase
     }
 
     /** @test */
-
-    function prunable_model_can_declare_properties()
+    public function prunable_model_can_declare_properties()
     {
         $m = new StuffWithPropertiesModel();
-        $this->assertEquals($m->getPruningColumn(),'test_column')   ;
-        $this->assertEquals($m->getHours(),1);
-        $this->assertEquals($m->getChunkSize(),1000);
-        $this->assertEquals($m->getWithDeleteEvents(),false);
+        $this->assertEquals($m->getPruningColumn(), 'test_column');
+        $this->assertEquals($m->getHours(), 1);
+        $this->assertEquals($m->getChunkSize(), 1000);
+        $this->assertEquals($m->getWithDeleteEvents(), false);
     }
 
     /** @test */
-
-    function prunable_model_can_overwrite_method()
+    public function prunable_model_can_overwrite_method()
     {
         $m = new StuffWithOverwriteModel();
-        $this->assertEquals($m->getPruningColumn(),'test_column')   ;
-        $this->assertEquals($m->getHours(),1);
-        $this->assertEquals($m->getChunkSize(),1000);
-        $this->assertEquals($m->getWithDeleteEvents(),false);
+        $this->assertEquals($m->getPruningColumn(), 'test_column');
+        $this->assertEquals($m->getHours(), 1);
+        $this->assertEquals($m->getChunkSize(), 1000);
+        $this->assertEquals($m->getWithDeleteEvents(), false);
     }
-
 
     /** @test */
     public function model_prunable_can_be_prune()
