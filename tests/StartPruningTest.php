@@ -78,4 +78,24 @@ class StartPruningTest extends TestCase
         $this->assertCount(1, StuffModel::all());
         $this->assertCount(2, StuffConstrainedModel::all());
     }
+
+    /** @test */
+    public function prune_one_model_with_model_method()
+    {
+        Config::set('laravel-eloquent-pruning.models', [StuffModel::class]);
+
+        $this->assertCount(0, StuffModel::all());
+        $hours = [3, 2, 0];
+        foreach ($hours as $hour) {
+            factory(StuffModel::class)->create([
+                'created_at' => now()->subHour($hour),
+            ]);
+        }
+
+        $this->assertCount(3, StuffModel::all());
+
+        (new StuffModel)->setHours(1)->prune();
+
+        $this->assertCount(1, StuffModel::all());
+    }
 }
