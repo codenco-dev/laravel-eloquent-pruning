@@ -6,6 +6,6 @@ return [
     'hours' => 24,
     'with_delete_events' => true,
     'models' => [
-//        App\MyModel::class,
+        //        App\MyModel::class,
     ],
 ];
