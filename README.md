@@ -87,6 +87,36 @@ You must define models that will be affected by pruning.
         App\MySecondModel::class,
     ],
 ```
+
+
+If some records can't be prune, with business logic, you can use this methods : 
+
+If `with_delete_events` is false, the business logic must be put in `scopeCouldBePruned` like this
+
+``` php
+    /**
+     * Scope that allows filter records for pruning.
+     */
+    public function scopeCouldBePruned(Builder $query): Builder
+    {
+        return $query->where('status','done');
+    }
+```
+
+If `with_delete_events` is true, the business logic can be put in `scopeCouldBePruned` but also by overwrite `canBePruned` method like this
+
+``` php
+    /**
+     * Define if the active record can be pruned, if the ProcessWithDeleteEvents is true.
+     */
+    public function canBePruned(): bool
+    {
+        //tests, extern call etc.
+        return MyService::checkMyModelIsDeletable($this->id);
+    }
+```
+
+
 ## Usage
 
 You can add global pruning on your schedule by modifying `app/Console/Kernel.php` like this for example
