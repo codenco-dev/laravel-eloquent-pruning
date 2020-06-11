@@ -1,4 +1,4 @@
-# Very short description of the package
+# Easily prune your Eloquent Model Records
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/codenco-dev/laravel-eloquent-pruning.svg?style=flat-square)](https://packagist.org/packages/codenco-dev/laravel-eloquent-pruning)
 [![Build Status](https://img.shields.io/travis/codenco-dev/laravel-eloquent-pruning/master.svg?style=flat-square)](https://travis-ci.org/codenco-dev/laravel-eloquent-pruning)
@@ -84,3 +84,6 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 ## Laravel Package Boilerplate
 
 This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
+
+## Inspiration
+This package is inspired by laravel/telescope pruning. 
