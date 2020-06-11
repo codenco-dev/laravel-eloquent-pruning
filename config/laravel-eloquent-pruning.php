@@ -4,7 +4,8 @@ return [
     'pruning_column' => 'created_at',
     'chunk_size' => 100,
     'hours' => 24,
-    'must_use_delete_event' => false,
     'with_delete_events' => true,
-    'models' => [], //List of models for pruning:start command
+    'models' => [
+//        App\MyModel::class,
+    ],
 ];
