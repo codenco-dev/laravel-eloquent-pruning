@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(StuffConstrainedModel::class, function (Faker $faker) {
     return [
-        'created_at' => now()
+        'created_at' => now(),
     ];
 });

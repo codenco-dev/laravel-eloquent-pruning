@@ -1,6 +1,5 @@
 <?php
 
-
 namespace CodencoDev\LaravelEloquentPruning\Tests;
 
 use CodencoDev\LaravelEloquentPruning\LaravelEloquentPruningServiceProvider;
@@ -37,8 +36,5 @@ abstract class TestCase extends Orchestra
             $table->increments('id');
             $table->timestamps();
         });
-
-
-
     }
 }

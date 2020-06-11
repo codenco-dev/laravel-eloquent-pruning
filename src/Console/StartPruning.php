@@ -1,10 +1,7 @@
 <?php
 
-
 namespace CodencoDev\LaravelEloquentPruning\Console;
 
-
-use CodencoDev\LaravelEloquentPruning\LaravelEloquentPruning;
 use CodencoDev\LaravelEloquentPruning\LaravelEloquentPruningFacade;
 
 class StartPruning extends \Illuminate\Console\Command
@@ -17,6 +14,5 @@ class StartPruning extends \Illuminate\Console\Command
     {
         $pruned_count = LaravelEloquentPruningFacade::prune($this->option('hours') ?: 0);
         $this->info($pruned_count.' entries pruned.');
-
     }
 }

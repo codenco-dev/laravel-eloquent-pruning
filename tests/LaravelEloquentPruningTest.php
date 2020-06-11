@@ -6,16 +6,13 @@ use CodencoDev\LaravelEloquentPruning\LaravelEloquentPruningFacade;
 use CodencoDev\LaravelEloquentPruning\Tests\TestModels\StuffConstrainedModel;
 use CodencoDev\LaravelEloquentPruning\Tests\TestModels\StuffModel;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Config;
 
 class LaravelEloquentPruningTest extends TestCase
 {
     use WithFaker;
 
     /** @test */
-
-    function has_models_attribute()
+    public function has_models_attribute()
     {
         $model = $this->faker->name;
         $o = LaravelEloquentPruningFacade::setModels([$model]);
@@ -39,7 +36,6 @@ class LaravelEloquentPruningTest extends TestCase
         $pruning->prune(1);
 
         $this->assertCount(1, StuffModel::all());
-
     }
 
     public function has_hours_option()
@@ -63,11 +59,9 @@ class LaravelEloquentPruningTest extends TestCase
         $pruning->prune(1);
 
         $this->assertCount(1, StuffModel::all());
-
     }
 
     /** @test */
-
     public function prune_all_models()
     {
         $pruning = LaravelEloquentPruningFacade::setModels([StuffModel::class, StuffConstrainedModel::class]);
@@ -85,7 +79,6 @@ class LaravelEloquentPruningTest extends TestCase
             ]);
         }
 
-
         $this->assertCount(3, StuffModel::all());
         $this->assertCount(3, StuffConstrainedModel::all());
 
@@ -93,7 +86,5 @@ class LaravelEloquentPruningTest extends TestCase
 
         $this->assertCount(1, StuffModel::all());
         $this->assertCount(2, StuffConstrainedModel::all());
-
-
     }
 }

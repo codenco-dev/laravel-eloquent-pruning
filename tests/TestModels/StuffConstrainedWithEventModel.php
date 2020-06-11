@@ -11,7 +11,6 @@ class StuffConstrainedWithEventModel extends Model
     use Prunable;
     protected $fillable = ['id'];
 
-
     public function canBePruned()
     {
         return $this->id != 1;
@@ -21,5 +20,4 @@ class StuffConstrainedWithEventModel extends Model
     {
         return $query;
     }
-
 }
