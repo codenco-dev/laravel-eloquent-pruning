@@ -5,7 +5,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/codenco-dev/laravel-eloquent-pruning.svg?style=flat-square)](https://scrutinizer-ci.com/g/codenco-dev/laravel-eloquent-pruning)
 [![Total Downloads](https://img.shields.io/packagist/dt/codenco-dev/laravel-eloquent-pruning.svg?style=flat-square)](https://packagist.org/packages/codenco-dev/laravel-eloquent-pruning)
 
-We often have to clean up the records of our databases by deleting the oldest data.
+We often have to clean up the records of our databases by deleting the oldest and useless data.
 This package allows, via Eloquent models, to make this easier.
 
 
