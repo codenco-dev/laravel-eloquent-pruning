@@ -22,7 +22,7 @@ composer require codenco-dev/laravel-eloquent-pruning
 We have several options that must be configure.
 
 + `pruning_column` - The name of the column that will be used to determine if a record should be pruned
-+ `hours` - The hours count that will determine if a record should pruned relative to pruning_column and now
++ `hours` - The hours count that will determine if a record should pruned relative to pruning_column and now datetime
 + `with_delete_events` - If the value is true, the delete method of model will be call, allowing fire events. If the value is false, the delete action will be done with query builder, without event.
 + `chunk_size` - The size of delete query if with_delete_events is false
 
