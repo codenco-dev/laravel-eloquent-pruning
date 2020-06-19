@@ -6,7 +6,7 @@ class LaravelEloquentPruning
 {
     private $models = null;
 
-    public function prune(int $hours = 0)
+    public function prune(int $hours = 0): int
     {
         $pruned_count = 0;
         foreach ($this->getModels() as $model) {
