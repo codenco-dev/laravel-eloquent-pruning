@@ -34,7 +34,7 @@ class LaravelEloquentPruningServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('laravel-eloquent-pruning', function () {
-            return new LaravelEloquentPruning;
+            return new LaravelEloquentPruning();
         });
     }
 }

@@ -94,7 +94,7 @@ class StartPruningTest extends TestCase
 
         $this->assertCount(3, StuffModel::all());
 
-        (new StuffModel)->setHours(1)->prune();
+        (new StuffModel())->setHours(1)->prune();
 
         $this->assertCount(1, StuffModel::all());
     }

@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'pruning_column' => 'created_at',
-    'chunk_size' => 100,
-    'hours' => 24,
+    'pruning_column'     => 'created_at',
+    'chunk_size'         => 100,
+    'hours'              => 24,
     'with_delete_events' => true,
-    'models' => [
+    'models'             => [
         //        App\MyModel::class,
     ],
 ];
