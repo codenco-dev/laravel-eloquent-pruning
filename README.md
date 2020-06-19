@@ -1,8 +1,7 @@
 # Easily prune your Eloquent Model Records
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/codenco-dev/laravel-eloquent-pruning.svg?style=flat-square)](https://packagist.org/packages/codenco-dev/laravel-eloquent-pruning)
-[![Build Status](https://img.shields.io/travis/codenco-dev/laravel-eloquent-pruning/master.svg?style=flat-square)](https://travis-ci.org/codenco-dev/laravel-eloquent-pruning)
-[![Quality Score](https://img.shields.io/scrutinizer/g/codenco-dev/laravel-eloquent-pruning.svg?style=flat-square)](https://scrutinizer-ci.com/g/codenco-dev/laravel-eloquent-pruning)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/codenco-dev/laravel-eloquent-pruning/run-tests?label=tests)](https://github.com/codenco-dev/laravel-eloquent-pruning/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/codenco-dev/laravel-eloquent-pruning.svg?style=flat-square)](https://packagist.org/packages/codenco-dev/laravel-eloquent-pruning)
 
 We often have to clean up the records of our databases by deleting the oldest and useless data.
