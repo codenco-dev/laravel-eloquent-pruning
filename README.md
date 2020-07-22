@@ -18,15 +18,20 @@ composer require codenco-dev/laravel-eloquent-pruning
 
 ## Configuration
 
-We have several options that must be configure.
+We have several options that can be configure.
 
 + `pruning_column` - The name of the column that will be used to determine if a record should be pruned
 + `hours` - The hours count that will determine if a record should pruned relative to pruning_column and now datetime
 + `with_delete_events` - If the value is true, the delete method of model will be call, allowing fire events. If the value is false, the delete action will be done with query builder, without event.
 + `chunk_size` - The size of delete query if with_delete_events is false
 
+If all prunable models have the same configuration, you can do it in the `laravel-eloquent-pruning` file.
+You can publish configuration file with this command line
+```bash
+php artisan vendor:publish --provider="CodencoDev\LaravelEloquentPruning\LaravelEloquentPruningServiceProvider" --tag="config"
+``` 
 
-Each options for a model can be defined in the model file like this : 
+If all prunable models don't have the same configuration, each options for a model can be defined in the model file like this : 
 
  ``` php
      class MyModel extends Model
@@ -74,10 +79,7 @@ If you need something more elaborate, you be able to overwrite, `Prunable` trait
     }
 ```
  
-You can publish configuration file with this command line
-```bash
-php artisan vendor:publish --provider="CodencoDev\LaravelEloquentPruning\LaravelEloquentPruningServiceProvider" --tag="config"
-```
+
 
 In configuration file, you can manage default value for the Pruning Package. 
 You must define models that will be affected by pruning.  
