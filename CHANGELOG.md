@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-eloquent-pruning` will be documented in this file
 
+## 1.2.0 - 2020-07-02
+- add Laravel 8 support
+
 ## 1.1.0 - 2020-07-02
 - change testbench version
 
